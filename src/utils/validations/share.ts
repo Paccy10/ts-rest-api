@@ -1,6 +1,6 @@
 import { check } from "express-validator";
 
-export const newShareValitors = [
+export const newShareValidators = [
   check("quantity", "quantity must be a positive integer")
     .trim()
     .isInt({ min: 1 }),
