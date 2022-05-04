@@ -9,8 +9,8 @@ export class Share {
   type: string;
 
   @Column("integer", { nullable: false, default: 0 })
-  quantity: number;
+  qty: number;
 
   @Column("float", { nullable: false })
-  price: number;
+  prc: number;
 }
