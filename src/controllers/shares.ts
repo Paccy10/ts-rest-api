@@ -169,7 +169,7 @@ const sell = async (req: Request, res: Response, next: NextFunction) => {
       await shareRepository.save(highestShare);
 
       const share = buys.find((b) => b.prc === price);
-      if (share) {
+      if (share && share.qty >= remainder) {
         share.qty -= remainder;
         const savedShare = await shareRepository.save(share);
         return response({ res, code: 200, data: { share: savedShare } });
@@ -228,7 +228,7 @@ const buy = async (req: Request, res: Response, next: NextFunction) => {
       await shareRepository.save(lowestShare);
 
       const share = sells.find((b) => b.prc === price);
-      if (share) {
+      if (share && share.qty >= remainder) {
         share.qty -= remainder;
         const savedShare = await shareRepository.save(share);
         return response({ res, code: 200, data: { share: savedShare } });
